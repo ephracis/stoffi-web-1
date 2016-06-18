@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+gem 'test-kitchen'
+gem 'kitchen-vagrant'
+gem 'rubocop'
+gem 'foodcritic'
+gem 'chefspec'
+gem 'berkshelf'
+gem 'chef-vault'
+gem 'chef-vault-testfixtures'
+gem 'codeclimate-test-reporter'

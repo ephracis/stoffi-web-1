@@ -1,0 +1,13 @@
+name             'stoffi-web'
+maintainer       'Christoffer Reijer'
+maintainer_email 'ephracis at gmail'
+license          'GPL v3'
+description      'Installs the Rails app of the Stoffi cloud service'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.0'
+chef_version     '~> 12'
+issues_url       'http://github.com/simplare-cookbooks/stoffi-web/issues'
+source_url       'http://github.com/simplare-cookbooks/stoffi-web'
+depends          'chef-vault'
+supports         'ubuntu', '= 14.04'
+supports         'centos', '= 7.2'

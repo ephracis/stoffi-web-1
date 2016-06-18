@@ -1,0 +1,39 @@
+sudo: required
+addons:
+  apt:
+    sources:
+    - chef-current-trusty
+    packages:
+    - chefdk
+  code_climate:
+    repo_token: d03308bc9406e2b69c70bdfbcc34ec3e76fd10cc5de549fa08cce66b1b2463b8
+language: ruby
+env:
+  global:
+  - machine_user=travis
+  - machine_pass=travis
+  - machine_port=22
+  - KITCHEN_YAML=.kitchen.travis.yml
+  - secure: HAwu12ztbDZPcXowOeve53+eiAzxMY+mr7x8Ya85efBpzUJtg69GkWE6YXtQRQXW+F+yivMJFP8Ep7O/G4N4ohLr5Wouw9Na7xaWZoCy0woGyEqoEQ8+qqjmLdao4WlzeQmUp3hIyVU4cPtbg+OGmuVB0IQNFpvkbPtu25G38+oW2FU1mKeKpo3anVl+3bKv1s+S3B2Zv+VfsRumpICh8ewvZrjUJlDNM5kleQQQ+3MZJlA3YHGgsRXjKjHv5EYqoiMBUIzQGEcX3PmXHgQvpEFJWyLQwSVthS1NhmocDvt+kCPr6Gtpb/sRbg6H9Xebpp3QvD/FUjmz5LSkKMZPnwYCLx7zeKy5svHVcXCuCH1LM4W6YoU6Vm6DR5aEOvihM/+XBpqoljWLan9LrL4YAxS7koNfznXCId4fcUFbPACyFkHH+3t8dO0N9gbxK1RHOtYbCyjbcTseN4utSD5Ifl5m3ISBWOhoTk2TWqI0o199IqO3Q8Vvi6PvHJ3egS28V6ivEXdx7wY6Z0vdGuKzrog6CM4QKmTbn3uFC3KqQwJlqPnSxC8XeJCa9S801/48KQ7RjUYJ++AYdON/iRZ4ZwftDnyoR1Kih2rBxvBA+UL+68IN6BzOgdgHBWM1hs3q3vYl4tDMjNs+g/w6iTujKpOSrQRyObrG6HVyW38O3Rg=
+  - secure: GZ5y2pZJCjojhcxIsFtJrT72VGyCWN7Yu6lxJaL1vzoFn6ZkI/VSo4nO57533D0A8K6G0wp6LIC1axmrZh+yQfSWPXWURamHhC21T4gMLvKMZl0SnrGbZ4WplnUS5JiuP9Ip+qLE4oja3DTGcNz16uM4m5uhkoDQ4azEqkFkZRREoYXEnyC2vxhDaEaY5I9krfCayYwwMOVU4w8KLEkS9dPsU2nU4Chlrqqw0D6JnE8yo1lGgVYbZNu7wGETXXFSKETsdiNswGCteIh4nxJD7YabG1nugGRJfoEEJ1xU0xJhO8WDlV2DGMdFieeDu/QMSeUU+1RFjQ/wrg+s5beIKCqc6/k4bBG+g899CTkox8q1++smrKsGdu2enzKbWKFmcCz9hcjPILtHd45h1xmpmZxPJtKIbQVA2L8c8RIwdMm2yxygrLNo3DrLbrFo/kjd1fLPxeNeep+eyhvbuKw+0JnWSWpAlpOO9k0V+nszFYhyYVhKhUx30F3+X7GCJHCDNY6aGXOMYe+QeFZd5JNOWWYdYmE9yPsBYhLgJVqIByxnscpDs52jxyplhPk1HPlxar/WfNMn77rfIuCrhpnCdcFlORwfrpnHKzJmY6+KWZn/uqsMgE7XaVAAd9nE2x4HsrkLX4EU8agWDLUAHirWHY1qaC31CytARMo2dqXohm0=
+rvm:
+- 2.3.1
+dist: trusty
+before_install:
+- sudo usermod -p "`openssl passwd -1 'travis'`" travis
+script:
+- "/opt/chefdk/embedded/bin/rake"
+notifications:
+  slack:
+    secure: suGaCS36HiNKPc+EHMnmKZGnA906oPtT+z0UKk69usXnLNFRKSUoqrNh38wgPzT+4Jug7Dd+1PNce9L1sqRfvFjYCdnnLI88OgkgPQipVHtYM32iX/BCYyf9cWjHGgTuNY9CrOXpoL9KbHQGrmXmxAIe4bitZaZH55Mjz6TdJXQx0wJ17pwypcNB4wAtp+CR43F7zY+QacLvhuIFdUmcY2T9Pl/p9np8UyFDkzvAYxK/8dMbF0hZq3mGjrCufCZwnK2TzMm+F5ANneKKhaSNYurxCITOsQvRyQn+SlFqCCBPMitX6CpEfpj8dgUdsr+yMPy7j1+U2GsXjm4IeTXO9d21sxFggMqySFZaTlmn9zb+yFFmv1ms6loEm7no6FOr8tdD/z5vbtxgh3FlyTTxYAS1e6SMeXVfm0iHKhatRXqUVx/UlCOERItrEh/4/X1wgpT/f3qoZUZzr90cb6DATRGwl90luWGW5U28iZTXCLoFExnlnNTHK31z3L4k8Ya0Ng5fPVNocY/SgPZpibSTWM2rxCOmrAvibf3WYhtRblVDr9R92QEuKdj6/Ale6tAYsSy8AymcQTL0B/EpOvjJEbwhe/7zVyYZElD9YRLDEZm5mPYZkC9chNg3lIOizNtGLD75Bw6hP95ny/OfEqEFULS+go5DosbUB/rnJ+NeTJA=
+deploy:
+  edge: true
+  provider: chef-supermarket
+  user_id: ephracis
+  client_key: ".travis/client-key.pem"
+  cookbook_category: Networking
+  on:
+    tags: true
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_5bfc136bb085_key -iv $encrypted_5bfc136bb085_iv
+  -in .travis/client-key.pem.enc -out .travis/client-key.pem -d
