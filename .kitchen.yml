@@ -2,6 +2,7 @@
 driver:
   name: vagrant
 
+
 provisioner:
   name: chef_zero
 
@@ -13,3 +14,9 @@ suites:
   - name: default
     run_list:
       - recipe[stoffi-web::default]
+  - name: web
+    run_list:
+      - recipe[stoffi-web::web]
+    driver_config:
+      network:
+      - ["forwarded_port", { guest: 80, host: 8080 }]

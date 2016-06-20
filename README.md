@@ -3,20 +3,27 @@
 [![Code Climate](https://codeclimate.com/github/simplare-cookbooks/stoffi-web/badges/gpa.svg)](https://codeclimate.com/github/simplare-cookbooks/stoffi-web)
 [![Test Coverage](https://codeclimate.com/github/simplare-cookbooks/stoffi-web/badges/coverage.svg)](https://codeclimate.com/github/simplare-cookbooks/stoffi-web/coverage)
 
-# stoffi-web Cookbook
+Cookbook for setting up Stoffi's web services
+=============================================
 
 This cookbook installs the Rails app of the Stoffi cloud service onto a node.
 
-## Supported Platforms
+Supported Platforms
+-------------------
 
 - CentOS 7.2
 - Ubuntu 14.04
 
-## Attributes
+Attributes
+----------
 TODO
 
-## Encrypted data bags
+Encrypted data bags
+-------------------
 TODO
 
-## Usage
-TODO
+Usage
+-----
+
+### stoffi-web::web
+This recipe installs a web server, namely nginx.
